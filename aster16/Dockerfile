@@ -11,7 +11,7 @@ RUN apt-get install -y libmysql++-dev default-libmysqlclient-dev zlib1g-dev libc
 RUN apt-get install -y libedit-dev libsqlite3-dev
 RUN mkdir -p /usr/src/asterisk \
     && cd /usr/src \    
-    && wget https://downloads.asterisk.org/pub/telephony/asterisk/asterisk-16-current.tar.gz \
+    && wget https://downloads.asterisk.org/pub/telephony/asterisk/asterisk-13-current.tar.gz \
     && tar -xzvf /usr/src/asterisk-16-current.tar.gz --strip-components=1 -C /usr/src/asterisk \
     && mv /etc/localtime /etc/localtime.bak \
     && ln -s /usr/share/zoneinfo/Europe/Chisinau /etc/localtime
