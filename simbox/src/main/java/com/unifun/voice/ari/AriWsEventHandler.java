@@ -1,7 +1,9 @@
 package com.unifun.voice.ari;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +15,7 @@ import ch.loway.oss.ari4java.generated.ChannelHangupRequest;
 import ch.loway.oss.ari4java.generated.ChannelStateChange;
 import ch.loway.oss.ari4java.generated.ChannelVarset;
 import ch.loway.oss.ari4java.generated.Message;
+import ch.loway.oss.ari4java.generated.Playback;
 import ch.loway.oss.ari4java.generated.PlaybackFinished;
 import ch.loway.oss.ari4java.generated.PlaybackStarted;
 import ch.loway.oss.ari4java.generated.StasisEnd;
@@ -96,6 +99,7 @@ public class AriWsEventHandler implements AriCallback<Message>{
 	 * 
 	 * @param event
 	 */
+	Map<String, Temp> achannel = new HashMap<>();
 	private void onStasisStart(StasisStart event) {
 		
 		try {
@@ -109,7 +113,9 @@ public class AriWsEventHandler implements AriCallback<Message>{
 		    ActionChannels ac = aim.getAri().getActionImpl(ActionChannels.class);
 //		    if ("Ring".equals(channel.getState())) {
 		    	ac.answer(channelId);
-		    	ac.play(channelId, "sound:hello-world", "", 0, 0, "");
+		    	Playback pb = ac.play(channelId, "sound:hello-world", "", 0, 0, "");
+		    	achannel.put(pb.getId(), new Temp(channel, null));
+		    	
 //		    }
 		    //ac.hangup(channelId, "normal"/*Allowed values: normal, busy, congestion, no_answer*/);
 		    aim.getAri().closeAction(ac);
@@ -163,7 +169,8 @@ public class AriWsEventHandler implements AriCallback<Message>{
 	 * }, "asterisk_id": "02:42:ac:11:00:02", "application": "Unifun-ARI" }
 	 */
 	private void onPlaybackStarted(PlaybackStarted event) {
-		
+		logger.info("Start palayback");
+
 	}
 	
 	/**
@@ -173,6 +180,18 @@ public class AriWsEventHandler implements AriCallback<Message>{
 	 * "asterisk_id": "02:42:ac:11:00:02", "application": "Unifun-ARI" }
 	 */
 	private void onPlaybackFinished(PlaybackFinished event) {
+		logger.info("Stop palayback");
+		Temp tmp = achannel.get(event.getPlayback().getId());
+		try {
+			 ActionChannels ac = aim.getAri().getActionImpl(ActionChannels.class);
+			 
+			ac.hangup(tmp.getChannel().getId(), "normal");
+			 aim.getAri().closeAction(ac);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	
