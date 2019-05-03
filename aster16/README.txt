@@ -1,5 +1,5 @@
-1. Build docker file #docker build . -t asterisk16
-2. run container with #docker run --name aster -p 10000-10009 -p 10000-10009/udp -p 8088:8088 -p 5060:5060 -p 5060:5060/udp -P -d asterisk16
+1. Build docker file #docker build . -t asterisk13
+2. run container with #docker run --name aster3 -p 10000-10009 -p 10000-10009/udp -p 8088:8088 -p 8089:8089 -p 5060:5060 -p 5060:5060/udp -P -d asterisk13
 =================================================
 Name                            Port    Group
 sip                             5060	VOIP
