@@ -14,7 +14,7 @@ import ch.loway.oss.ari4java.tools.ARIException;
 public class AriManager {
 	private static final Logger logger = Logger.getLogger(AriManager.class);
 	//FIXME: put this options in propertie file.
-	private String ARI_URL="http://localhost:8088/";
+	private String ARI_URL="http://192.168.88.159:8088/";
 	private String USER="unifun";
 	private String PASSWORD="unifun";
 	private String APPLICATION="Unifun-ARI";

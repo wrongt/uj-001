@@ -26,7 +26,7 @@ export class AuthService {
           console.log('token', JSON.stringify(tmp['token']));
           localStorage.setItem('authtoken', JSON.stringify(tmp['token']));
           //localStorage.setItem('user', JSON.stringify(data['user']));
-          this.router.navigate(['']);
+          // this.router.navigate(['']);
 
       }
       

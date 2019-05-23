@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 
 import ch.loway.oss.ari4java.generated.ActionChannels;
 import ch.loway.oss.ari4java.generated.Channel;
+import ch.loway.oss.ari4java.generated.ChannelCreated;
 import ch.loway.oss.ari4java.generated.ChannelDtmfReceived;
 import ch.loway.oss.ari4java.generated.ChannelHangupRequest;
 import ch.loway.oss.ari4java.generated.ChannelStateChange;
@@ -45,7 +46,7 @@ public class AriWsEventHandler implements AriCallback<Message>{
 	 */
 	@Override
 	public void onSuccess(Message result) {
-		logger.trace("received Message {}", result.getClass());
+		logger.debug("received Message {}", result.getClass());
 		if (result instanceof StasisStart) {
 			onStasisStart((StasisStart) result);
 		} else if (result instanceof StasisEnd) {
@@ -63,11 +64,45 @@ public class AriWsEventHandler implements AriCallback<Message>{
 			logger.warn("Event {} not handlet yet",result.getClass().getSimpleName());
 		} else if (result instanceof ChannelHangupRequest) {
 			onChannelHangupRequest((ChannelHangupRequest)result);
-		}else {
+		} else if (result instanceof ChannelCreated) {
+			onChannelCreated((ChannelCreated)result);
+		}
+		else {
 			logger.warn("Event {} not handlet yet",result.getClass().getSimpleName());
 		}
 	}
 	
+	private void onChannelCreated(ChannelCreated event) {
+		try {
+		    Channel channel = event.getChannel();
+		    String channelId = channel.getId();
+		    String applicationName = event.getApplication();
+		    logger.info("onChannelCreated: received message with channelId {} on application {}, channel state {}"
+		    		+ "called number {}, calling number {}", 
+		    		channelId,applicationName,channel.getState(), channel.getCaller().getNumber(), 
+		    		channel.getDialplan().getExten());
+//		    ActionChannels ac = aim.getAri().getActionImpl(ActionChannels.class);
+////		    if ("Ring".equals(channel.getState())) {
+//		    	ac.answer(channelId);
+//		    	Playback pb = ac.play(channelId, "sound:hello-world", "", 0, 0, "");
+//		    	achannel.put(pb.getId(), new Temp(channel, null));
+//		    	
+////		    }
+//		    //ac.hangup(channelId, "normal"/*Allowed values: normal, busy, congestion, no_answer*/);
+////		    aim.getAri().closeAction(ac);
+////                if(applicationName.equals(ariService.getTerminateStasis())) {
+////                    ActionChannels actionChannels = ariService.getAri().getActionImpl(ActionChannels.class);
+////                    actionChannels.answer(channelId);
+////                    //actionChannels.startMoh(channelId,"");
+////                    ariService.getAri().closeAction(actionChannels);
+////                }
+//
+		} catch (Exception e) {
+		    logger.error("Unknown Error",e);
+		}
+//		
+	}
+
 	@Override
 	public void onFailure(RestException e) {
 		logger.error("Some ");
@@ -106,13 +141,13 @@ public class AriWsEventHandler implements AriCallback<Message>{
 		    Channel channel = event.getChannel();
 		    String channelId = channel.getId();
 		    String applicationName = event.getApplication();
-		    logger.info("received message with channelId {} on application {}, channel state {}"
+		    logger.info("onStasisStart: received message with channelId {} on application {}, channel state {}"
 		    		+ "called number {}, calling number {}", 
 		    		channelId,applicationName,channel.getState(), channel.getCaller().getNumber(), 
 		    		channel.getDialplan().getExten());
 		    ActionChannels ac = aim.getAri().getActionImpl(ActionChannels.class);
 //		    if ("Ring".equals(channel.getState())) {
-		    	ac.answer(channelId);
+//		    	ac.answer(channelId);
 		    	Playback pb = ac.play(channelId, "sound:hello-world", "", 0, 0, "");
 		    	achannel.put(pb.getId(), new Temp(channel, null));
 		    	
@@ -181,7 +216,7 @@ public class AriWsEventHandler implements AriCallback<Message>{
 	 */
 	private void onPlaybackFinished(PlaybackFinished event) {
 		logger.info("Stop palayback");
-		Temp tmp = achannel.get(event.getPlayback().getId());
+		Temp tmp = achannel.remove(event.getPlayback().getId());
 		try {
 			 ActionChannels ac = aim.getAri().getActionImpl(ActionChannels.class);
 			 
