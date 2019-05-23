@@ -18,7 +18,7 @@ export class AuthService {
   login(username:string, password:string){
     let data = {auth: username.concat(':',password)};
     console.log("Invoke http post request",data);
-    return this.http.post<any>(environment.apiUrl,data).pipe(
+    return this.http.post<any>(`${environment.apiUrl}/auth`,data).pipe(
       map(data => {
         let tmp = JSON.parse(data);
         console.log(tmp && tmp['"status"'],tmp , tmp['status'])

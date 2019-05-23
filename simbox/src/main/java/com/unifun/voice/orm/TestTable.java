@@ -1,5 +1,6 @@
 package com.unifun.voice.orm;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,7 +16,8 @@ public class TestTable {
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 int id;
-String text;
+@Column(name="text")
+String name;
 
 public int getId() {
 	return id;
@@ -23,12 +25,11 @@ public int getId() {
 public void setId(int id) {
 	this.id = id;
 }
-public String getText() {
-	return text;
+public String getName() {
+	return name;
 }
-public void setText(String text) {
-	this.text = text;
+public void setName(String name) {
+	this.name = name;
 }
-
 
 }
