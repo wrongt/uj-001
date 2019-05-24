@@ -1,8 +1,10 @@
 package com.unifun.voice.endpoint;
 
-import java.util.Base64;
+/*import java.util.Base64;
+*/
 import java.util.Hashtable;
 import java.util.StringJoiner;
+
 
 
 import javax.json.bind.JsonbBuilder;
@@ -24,6 +26,16 @@ public class Auth {
 		reqBody = reqBody.substring(9,reqBody.length()-2);
 		/* byte[] decodedBytes = Base64.getDecoder().decode(reqBody); */
 		/* reqBody = new String(decodedBytes); */	
+		
+		/*
+		 * byte [] barr = Base64.getDecoder().decode(reqBody);
+		 * 
+		 * reqBody = new String(barr);
+		 */
+		
+		
+		
+		
 		int sep=reqBody.indexOf(":");
 		String username = reqBody.substring(0,sep);
 		String password = reqBody.substring(sep+1);

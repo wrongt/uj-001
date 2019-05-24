@@ -12,7 +12,7 @@ export class SimBoxListService {
   constructor(private http:HttpClient) { }
 
   getSimBoxsList() {
-    return this.http.get(`${environment.apiUrl}/testtable`)
+    return this.http.get(`${environment.apiUrl}/SimboxList`)
                 .toPromise()
                 .then(res => <SimBox[]> res)
                 .then(data => { 

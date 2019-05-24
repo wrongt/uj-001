@@ -119,9 +119,10 @@ public class AriWsEventHandler implements AriCallback<Message>{
 	 * "2019-03-31T11:55:16.713+0300", "language": "en" }, "asterisk_id":
 	 * "02:42:ac:11:00:02", "application": "Unifun-ARI" }
 	 */
-	private void onStatsisEnd(StasisEnd event) {
-		Channel channel = event.getChannel();
-	}
+	
+	 private void onStatsisEnd(StasisEnd event) { Channel channel =
+	 event.getChannel(); }
+	 
 
 	/**
 	 * { "type": "StasisStart", "timestamp": "2019-03-31T11:57:40.562+0300", "args":
