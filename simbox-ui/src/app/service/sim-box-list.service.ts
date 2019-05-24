@@ -15,13 +15,13 @@ export class SimBoxListService {
 
   simboxlist() {
     if (localStorage.getItem("authtoken")==null) {
-      this.router.navigate(['login']);
+      this.router.navigate(['/#/login']);
     }else {
       console.log("Getting device list");
     }
   
   }
-  
+
   getSimBoxsList() {
     return this.http.get(`${environment.apiUrl}/SimboxList`)
                 .toPromise()
