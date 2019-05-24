@@ -1,5 +1,6 @@
 package com.unifun.voice.endpoint;
 
+import java.util.Base64;
 /*import java.util.Base64;
 */
 import java.util.Hashtable;
@@ -24,14 +25,12 @@ public class Auth {
 	public String getPost(String reqBody) {
 		logger.info(reqBody);
 		reqBody = reqBody.substring(9,reqBody.length()-2);
-		/* byte[] decodedBytes = Base64.getDecoder().decode(reqBody); */
-		/* reqBody = new String(decodedBytes); */	
+	
 		
-		/*
-		 * byte [] barr = Base64.getDecoder().decode(reqBody);
-		 * 
-		 * reqBody = new String(barr);
-		 */
+//		  byte [] barr = Base64.getDecoder().decode(reqBody);
+//		  
+//		 reqBody = new String(barr);
+		 
 		
 		
 		
@@ -67,7 +66,7 @@ public class Auth {
 		}
 		catch(Exception e) {
 			StringJoiner sj = new StringJoiner(",","{","}");
-			sj.add(String.format(json_field, "status","eroarelogare"));
+			sj.add(String.format(json_field, "status","notok"));
 			return JsonbBuilder.create().toJson(sj.toString());
 		}
 

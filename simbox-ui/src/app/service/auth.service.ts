@@ -30,7 +30,11 @@ export class AuthService {
 
       }
       
+      if (tmp && tmp['status']=="notok") {
+        alert("Incorrect username or password");
+        localStorage.removeItem("authtoken");
       return data;
+      }
         console.log(data);
       })
     );
