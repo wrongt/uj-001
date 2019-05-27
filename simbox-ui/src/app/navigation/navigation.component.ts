@@ -19,6 +19,7 @@ export class NavigationComponent implements OnInit {
   constructor(private sList:SimBoxListService,private messageService: MessageService) { }
 
   ngOnInit() {
+    this.sList.SimBoxList();
     this.sList.getSimBoxsList().then(data=>this.simBoxes = data);
     this.items = [
       { label: 'View', icon: 'pi pi-search', command: (event) => console.log("view", event,this.selectedSimBox) },

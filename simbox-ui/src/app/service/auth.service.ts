@@ -26,15 +26,15 @@ export class AuthService {
           console.log('token', JSON.stringify(tmp['token']));
           localStorage.setItem('authtoken', JSON.stringify(tmp['token']));
           //localStorage.setItem('user', JSON.stringify(data['user']));
-          // this.router.navigate(['']);
-          if (tmp && tmp['status']=="notok") {
-            alert("Incorrect username or password");
-            localStorage.removeItem("authtoken");
-          }
+         this.router.navigate(['']);
 
       }
       
+      if (tmp && tmp['status']=="notok") {
+        alert("Incorrect username or password");
+        localStorage.removeItem("authtoken");
       return data;
+      }
         console.log(data);
       })
     );

@@ -1,7 +1,12 @@
 package com.unifun.voice.endpoint;
 
+import java.util.Base64;
+/*import java.util.Base64;
+*/
 import java.util.Hashtable;
 import java.util.StringJoiner;
+
+
 
 import javax.json.bind.JsonbBuilder;
 import javax.naming.Context;
@@ -10,8 +15,8 @@ import javax.naming.directory.InitialDirContext;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 
-import org.apache.commons.codec.binary.Base64;
 import org.jboss.logging.Logger;
+
 
 @Path("/auth")
 public class Auth {
@@ -20,16 +25,40 @@ public class Auth {
 	@POST
 	public String getPost(String reqBody) {
 		
-		byte[] decode = Base64.decodeBase64(reqBody);
-		reqBody = new String(decode);
-		reqBody = reqBody.substring(3);
-		int separator = reqBody.indexOf(":");
-		String username = reqBody.substring(0,separator);
-		String password = reqBody.substring(separator+1);
-		System.out.println("usernama decoded: " + username);
-		System.out.println("password decoded: " + password);
 		logger.info(reqBody);
+		reqBody = reqBody.substring(9,reqBody.length()-2);
+		byte[] decodedBytes = Base64.getDecoder().decode(reqBody);
+		reqBody = new String(decodedBytes);		
+		int sep=reqBody.indexOf(":");
+		String username = reqBody.substring(0,sep);
+		String password = reqBody.substring(sep+1);
+//		
+//		logger.info(reqBody);
+//		reqBody = reqBody.substring(9,reqBody.length()-2);
+//	
+		
+//		  byte [] barr = Base64.getDecoder().decode(reqBody);
+//		  
+//		 reqBody = new String(barr);
+		 
+		
+		
+		
+//		
+//		int sep=reqBody.indexOf(":");
+//		String username = reqBody.substring(0,sep);
+//		String password = reqBody.substring(sep+1);
+//
+//	
+		System.out.println("username: "+username);
+		System.out.println("password: "+password);	
+		
 		//TODO check if user and password is ok 
+/*		StringJoiner sj = new StringJoiner(",","{","}");
+		sj.add(String.format(json_field, "status","ok"));
+		sj.add(String.format(json_field, "token","123"));
+		return JsonbBuilder.create().toJson(sj.toString());*/
+		
 		try {		
 			Hashtable<String, String> env = new Hashtable<String, String>();
 			env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
@@ -50,7 +79,8 @@ public class Auth {
 			sj.add(String.format(json_field, "status","notok"));
 			return JsonbBuilder.create().toJson(sj.toString());
 		}
-		
+
+ 
 		
 	}
 
