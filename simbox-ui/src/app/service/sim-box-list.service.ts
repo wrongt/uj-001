@@ -31,7 +31,9 @@ SimBoxList() {
     this.router.navigate(['login']);
   }
     else {
-    this.router.navigate(['']); 
+      this.router.navigate(['']);
+
+    // this.router.navigate(['']); 
   }
 
 }
