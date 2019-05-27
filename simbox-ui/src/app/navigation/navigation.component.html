@@ -1,40 +1,4 @@
-<style type="text/css"> 
-  
-     
-  #navbar ul { 
-       margin: 0; 
-       padding: 5px; 
-       list-style-type: none; 
-       text-align: center; 
-       background-color: #000; 
-       } 
-    
-   #navbar ul {  
-       display: flex;
-       justify-content: space-between !important; 
-       } 
-    
-   
-       #navbar ul li a { 
-       text-decoration: none; 
-       padding: .2em 1em; 
-       color: #fff; 
-       background-color: #000; 
-       } 
-    
-   #navbar ul li a:hover { 
-       color: #000; 
-       color: lightblue;
-       cursor: pointer; 
-       } 
-
-    #navbar ul li {
-        margin-left: 5%;
-        margin-right: 5%; 
-    }
-     
-
-    </style> 
+ 
 
     <div id="navbar"> 
       <ul> 
@@ -67,10 +31,12 @@
       </ul> 
     </div> 
 
-<p-table [value]="simBoxes" [(contextMenuSelection)]="selectedSimBox" [contextMenu]="cm">
-  <ng-template pTemplate="header">
+
+    
+<p-table [value]="simBoxes" [(contextMenuSelection)]="selectedSimBox" [contextMenu]="cm" class="Table" >
+  <ng-template pTemplate="header"  >
       <tr>
-          <th>ID</th>
+          <th >ID</th>
           <th>Name</th>
       </tr>
   </ng-template>
@@ -82,3 +48,10 @@
   </ng-template>
 </p-table>
 <p-contextMenu #cm [model]="items"></p-contextMenu>
+
+
+
+
+
+
+
