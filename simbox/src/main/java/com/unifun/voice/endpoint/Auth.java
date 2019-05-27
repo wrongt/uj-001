@@ -17,15 +17,25 @@ import javax.ws.rs.Path;
 
 import org.jboss.logging.Logger;
 
+
 @Path("/auth")
 public class Auth {
 	private static final Logger logger = Logger.getLogger(Auth.class);
 	private String json_field = "\"%s\":\"%s\"";
 	@POST
 	public String getPost(String reqBody) {
+		
 		logger.info(reqBody);
 		reqBody = reqBody.substring(9,reqBody.length()-2);
-	
+		byte[] decodedBytes = Base64.getDecoder().decode(reqBody);
+		reqBody = new String(decodedBytes);		
+		int sep=reqBody.indexOf(":");
+		String username = reqBody.substring(0,sep);
+		String password = reqBody.substring(sep+1);
+//		
+//		logger.info(reqBody);
+//		reqBody = reqBody.substring(9,reqBody.length()-2);
+//	
 		
 //		  byte [] barr = Base64.getDecoder().decode(reqBody);
 //		  
@@ -34,12 +44,12 @@ public class Auth {
 		
 		
 		
-		
-		int sep=reqBody.indexOf(":");
-		String username = reqBody.substring(0,sep);
-		String password = reqBody.substring(sep+1);
-
-	
+//		
+//		int sep=reqBody.indexOf(":");
+//		String username = reqBody.substring(0,sep);
+//		String password = reqBody.substring(sep+1);
+//
+//	
 		System.out.println("username: "+username);
 		System.out.println("password: "+password);	
 		
