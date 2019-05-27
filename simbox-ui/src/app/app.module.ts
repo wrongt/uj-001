@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { NavigationComponent } from './navigation/navigation.component';
 
 import {TableModule} from 'primeng/table';
+import {ButtonModule} from 'primeng/button';
 
 import {ContextMenuModule} from 'primeng/contextmenu';
 
@@ -28,6 +29,7 @@ import {ContextMenuModule} from 'primeng/contextmenu';
     BrowserModule,
     AppRoutingModule,
     TableModule,
+    ButtonModule,
     ContextMenuModule
   ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
