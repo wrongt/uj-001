@@ -1,10 +1,7 @@
 package com.unifun.voice.endpoint;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Map;
+
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -42,14 +39,14 @@ public class ReqFilter implements Filter {
 			
 			
 			        
-			String auth = servletRequest.getHeader("Origin");
-			System.out.println(auth);
-			if (auth!=null) {
-				System.out.println(auth);
+//			String auth = servletRequest.getHeader("Origin");
+//			System.out.println(auth);
+//			if (auth!=null) {
+//				System.out.println(auth);
 
 			chain.doFilter(request, response);
-			} else {  System.out.println("TEST" + auth); } 
-	}
+//			} else {  System.out.println("TEST" + auth); } 
+//	}
 	
 
-}
+}}
