@@ -2,6 +2,7 @@ package com.unifun.voice.endpoint;
 
 import java.io.IOException;
 
+
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -12,11 +13,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.HttpMethod;
 
+import com.unifun.voice.endpoint.Auth;
+
+
 @WebFilter(urlPatterns = "/*", filterName = "RequestsFilter")
 public class ReqFilter implements Filter {
 
 	@Override
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+	public void doFilter (ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		 final HttpServletResponse servletResponse = (HttpServletResponse) response;
 	        final HttpServletRequest servletRequest = (HttpServletRequest) request;
@@ -30,8 +34,16 @@ public class ReqFilter implements Filter {
 	            return;
 	        }
 			
+			
+
+			        
+			        
+			String auth = servletRequest.getHeader("Origin");
+			if (auth!=null) {
+				System.out.println("Ceva Este" + auth);
+
 			chain.doFilter(request, response);
-		
+			} else {  System.out.println("TEST" + auth); } 
 	}
 	
 
