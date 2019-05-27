@@ -40,7 +40,7 @@ public class ReqFilter implements Filter {
 			        
 			String auth = servletRequest.getHeader("Origin");
 			if (auth!=null) {
-				System.out.println("Ceva Este" + auth);
+				System.out.println(auth);
 
 			chain.doFilter(request, response);
 			} else {  System.out.println("TEST" + auth); } 
