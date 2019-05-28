@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-webphone',
@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WebphoneComponent implements OnInit {
 
-  constructor() { }
+  constructor(private elementRef:ElementRef) {
+
+  };
 
   ngOnInit() {
+
+
+
+
+  
+  
   }
 
 }

@@ -1,3 +1,111 @@
-<p>
-  webphone works!
-</p>
+<html>
+
+<head>
+  <title>SIP.js Demo Phone</title>
+
+   
+   
+
+</head>
+
+<body>
+
+
+  <!-- Configuration Prompt -->
+  <form id="config-form" action="">
+    <label>Your Name <input type="text" name="displayName" placeholder="John Doe" value ="Costea"/></label>
+    <label>SIP URI <input type="text" name="uri" placeholder="john@example.com" value ="6003@192.168.1.161" /></label>
+    <label>Auth Username <input type="text" name="authorizationUser" placeholder="example_john" value = "6003" /></label>
+    <label>Password <input type="password" name="password" value ="1234"/></label>
+    <label>WS Server <input type="text" name="wsServers" placeholder="wss://edge.sip.onsip.com" value = "ws://192.168.1.161:8088/ws" /></label>
+    <input type="submit" name="configSubmit" value="Create UA" />
+  </form>
+
+
+<!--  TEST1-->
+
+
+<!--  END TEST1-->
+
+
+
+
+   <!-- UA Control Form -->
+    <div id="ua">
+      <div id="ua-status">Disconnected</div>
+      <button id="ua-register">Register</button>
+        <div id="phone">
+            <div class="controls">
+      <form id="new-session-form" action="">
+        <label>Enable Video <input type="checkbox" id="ua-video" unchecked/></label>
+<!--        <label>SIP URI      <input type="text" id="ua-uri" placeholder="will@example.com"/></label>-->
+          
+          <div class="dialbox">
+          <input type="text" class="destination" id="ua-uri" value=""/>
+          <div id ="output" class="to">To:</div>
+          <div class="dial-buttons">
+            <div class="button call" id="ua-invite-submit">call</div>
+            <div class="line-separator"></div>
+            <div class="button chat">chat</div>
+          </div>
+        <div class="dialpad">
+          <div class="line ">
+            <div class="button digit" id="one">1</div>
+            <div class="button digit-2">2</div>
+            <div class="button digit-3">3</div>
+          </div>
+          <div class="line-separator"></div>
+          <div class="line">
+            <div class="button digit-4">4</div>
+            <div class="button digit-5">5</div>
+            <div class="button digit-6">6</div>
+          </div>
+          <div class="line-separator"></div>
+          <div class="line">
+            <div class="button digit-7">7</div>
+            <div class="button digit-8">8</div>
+            <div class="button digit-9">9</div>
+          </div>
+          <div class="line-separator"></div>
+          <div class="line">
+            <div class="button digit-asterisk">*</div>
+            <div class="button digit-0">0</div>
+            <div class="button digit-pound">#</div>
+          </div>
+        </div><!-- .dialpad -->
+        </div>
+<!--         <input type="submit" id="ua-invite-submit" value="Invite" />
+        <input type="submit" id="ua-message-submit" value="Begin Chat" /> -->
+      </form>
+    </div>
+    </div>
+    </div>
+
+    <ul id="session-list"></ul>
+
+
+  <!-- Templates to clone Sessions and Messages -->
+  <ul id="templates">
+    <li id="session-template" class="template session">
+      <h2><strong class="display-name"></strong> <span class="uri"></span></h2>
+      <button class="green">Green</button>
+      <button class="red">Red</button>
+      <form class="dtmf" action="">
+        <label>DTMF <input type="text" maxlength="1" /></label>
+        <input type="submit" value="Send" />
+      </form>
+      <video autoplay>Video Disabled or Unavailable</video>
+      <ul class="messages"></ul>
+      <form class="message-form" action="">
+        <input type="text" placeholder="Type to send a message" /><input type="submit" value="Send" />
+      </form>
+    </li>
+  </ul>
+  
+<script src="js/jquery.js"></script>
+  <script src="js/sip-0.5.0.js"></script>
+  <script id="testScript" src="js/ua.js"></script>
+  <script src="js/button-action.js"></script>
+</body>
+
+</html>
