@@ -32,24 +32,7 @@ public class Auth {
 		int sep=reqBody.indexOf(":");
 		String username = reqBody.substring(0,sep);
 		String password = reqBody.substring(sep+1);
-//		
-//		logger.info(reqBody);
-//		reqBody = reqBody.substring(9,reqBody.length()-2);
-//	
-		
-//		  byte [] barr = Base64.getDecoder().decode(reqBody);
-//		  
-//		 reqBody = new String(barr);
-		 
-		
-		
-		
-//		
-//		int sep=reqBody.indexOf(":");
-//		String username = reqBody.substring(0,sep);
-//		String password = reqBody.substring(sep+1);
-//
-//	
+
 		System.out.println("username: "+username);
 		System.out.println("password: "+password);	
 		

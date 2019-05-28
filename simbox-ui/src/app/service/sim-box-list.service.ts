@@ -10,6 +10,7 @@ import { defineComponent, defineNgModule } from '@angular/core/src/render3';
   providedIn: 'root'
 })
 export class SimBoxListService {
+  
 
   constructor(private http: HttpClient, private router:Router) { }
 
@@ -31,10 +32,13 @@ SimBoxList() {
     this.router.navigate(['login']);
   }
     else {
-    this.router.navigate(['']); 
+      this.router.navigate(['']);
+
+    // this.router.navigate(['']); 
   }
 
 }
+
 
 
 }
