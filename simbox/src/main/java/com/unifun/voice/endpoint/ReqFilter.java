@@ -39,14 +39,14 @@ public class ReqFilter implements Filter {
 			
 			
 			        
-//			String auth = servletRequest.getHeader("Origin");
-//			System.out.println(auth);
-//			if (auth!=null) {
-//				System.out.println(auth);
+		String auth = servletRequest.getHeader("Origin");
+			System.out.println(auth);
+			if (auth!=null) {
+				System.out.println(auth);
 
 			chain.doFilter(request, response);
-//			} else {  System.out.println("TEST" + auth); } 
-//	}
+			} else {  System.out.println("TEST" + auth); } 
+	}
 	
 
-}}
+}

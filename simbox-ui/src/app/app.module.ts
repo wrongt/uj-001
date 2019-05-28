@@ -14,12 +14,14 @@ import {TableModule} from 'primeng/table';
 import {ButtonModule} from 'primeng/button';
 
 import {ContextMenuModule} from 'primeng/contextmenu';
+import { WebphoneComponent } from './webphone/webphone.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    NavigationComponent
+    NavigationComponent,
+    WebphoneComponent
   ],
   imports: [
     HttpClientModule,
