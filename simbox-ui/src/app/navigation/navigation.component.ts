@@ -34,7 +34,7 @@ export class NavigationComponent implements OnInit {
 
   onClick(event, simbox){
     console.log("On click",event,simbox);
-    this.router.navigate(['/webphone']);
+    this.router.navigate(['/MnoList']);
 
   }
   Logout() {

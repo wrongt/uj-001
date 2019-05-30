@@ -15,13 +15,15 @@ import {ButtonModule} from 'primeng/button';
 
 import {ContextMenuModule} from 'primeng/contextmenu';
 import { WebphoneComponent } from './webphone/webphone.component';
+import { MNOComponent } from './mno/mno.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     NavigationComponent,
-    WebphoneComponent
+    WebphoneComponent,
+    MNOComponent
   ],
   imports: [
     HttpClientModule,

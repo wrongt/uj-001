@@ -82,7 +82,7 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": [],
+            "scripts": [ "src/app/webphone/js/ua.js"],
             "assets": [
               "src/favicon.ico",
               "src/assets"
