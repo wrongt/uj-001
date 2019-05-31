@@ -10,14 +10,20 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="MNO")
-@NamedQuery(name="MNOList.getAll",query="select t from MNOList t")
+@NamedQuery(name="MNOList.getAll",query="select t from MNOList t WHERE simbox_id = 1")
 
 public class MNOList {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
-
+	int simbox_id;
+	public int getSimbox_id() {
+		return simbox_id;
+	}
+	public void setSimbox_id(int simbox_id) {
+		this.simbox_id = simbox_id;
+	}
 	String name;
 	public int getId() {
 		return id;

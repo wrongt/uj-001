@@ -42,5 +42,9 @@ export class NavigationComponent implements OnInit {
     this.router.navigate(['/login']);
     console.log ('authtoken is removed');
   }
+  MainPage () {
+    this.router.navigate(['']);
+
+  }
   
 }

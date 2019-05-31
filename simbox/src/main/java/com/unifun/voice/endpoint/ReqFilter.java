@@ -40,19 +40,19 @@ public class ReqFilter implements Filter {
 			
 			
 			        
-//		String auth = servletRequest.getHeader("Origin");
-//			if (auth!=null) {
-//				System.out.println(auth);
-//		    	String randomUUIDString = UUID.randomUUID().toString().replace("-", "");
-//				System.out.println("uuid = " + randomUUIDString);
+		String auth = servletRequest.getHeader("Origin");
+			if (auth!=null) {
+				System.out.println(auth);
+		    	String randomUUIDString = UUID.randomUUID().toString().replace("-", "");
+				System.out.println("uuid = " + randomUUIDString);
 
 
 			chain.doFilter(request, response);
 
-//			} else {  System.out.println("TEST" + auth); } 
-//	}
+			} else {  System.out.println("TEST" + auth); } 
+	}
 	
-	  // final String uuid = UUID.randomUUID().toString().replace("-", "");
+	   final String uuid = UUID.randomUUID().toString().replace("-", "");
 	
 
-} }
+} 

@@ -36,6 +36,7 @@ public class Auth {
 		System.out.println("username: "+username);
 		System.out.println("password: "+password);	
 		
+		
 		//TODO check if user and password is ok 
 /*		StringJoiner sj = new StringJoiner(",","{","}");
 		sj.add(String.format(json_field, "status","ok"));
