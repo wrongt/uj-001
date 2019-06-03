@@ -2,26 +2,40 @@
 
 <head>
   <title>SIP.js Demo Phone</title>
-
+  <script src="js/jquery.js"></script>
+  <script src="js/sip-0.5.0.js"></script>
+  <script src="js/ua.js"></script>
+  <script src="js/button-action.js"></script>
    
 
 </head>
 
 <body>
+  <script>
+  const files = ['js/sip-0.5.0.js','js/ua.js']
+  files.forEach((file) => {
+             const fileRef = document.createElement('script');
+             fileRef.setAttribute('type', 'text/javascript');
+             fileRef.setAttribute('src',  file);
+             fileRef.onload = function () {
+                 console.log('loaded' + file);
+             };
+             document.body.appendChild(fileRef);
+         });  </script>
 
-
-  <!-- Configuration Prompt -->
   <form id="config-form" action="">
     <label>Your Name <input type="text" name="displayName" placeholder="John Doe" value ="Costea"/></label>
     <label>SIP URI <input type="text" name="uri" placeholder="john@example.com" value ="6003@192.168.1.161" /></label>
     <label>Auth Username <input type="text" name="authorizationUser" placeholder="example_john" value = "6003" /></label>
     <label>Password <input type="password" name="password" value ="1234"/></label>
-    <label>WS Server <input type="text" name="wsServers" placeholder="wss://edge.sip.onsip.com" value = "ws://192.168.1.161:8088/ws" /></label>
+    <label>WS Server <input type="text" name="wsServers" placeholder="wss://edge.sip.onsip.com" value = "ws://172.17.79.81:8088/ws" /></label>
     <input type="submit" name="configSubmit" value="Create UA" />
-    <button type="submit" name="configSubmit" value="Create UA" (click)="createUa()"> Test22 </button>
-
   </form>
+
  
+
+  <button  type="submit" name="configSubmit" value="Create UA" (click)="configuseragent()" > User </button>
+  <input type="submit" name="configSubmit" value="Create UA" (click)="configuseragent()" />
 
 
 <!--  TEST1-->

@@ -25,7 +25,10 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.slim.js",
+              "node_modules/sip.js/dist/sip.min.js"
+              ],
             "es5BrowserSupport": true
           },
           "configurations": {
@@ -82,7 +85,7 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": [ "src/app/webphone/js/ua.js"],
+            "scripts": [ "../src/app/webphone/js/ua.js"],
             "assets": [
               "src/favicon.ico",
               "src/assets"
