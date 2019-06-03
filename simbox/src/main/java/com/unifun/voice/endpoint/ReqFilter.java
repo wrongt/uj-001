@@ -1,6 +1,7 @@
 package com.unifun.voice.endpoint;
 
 import java.io.IOException;
+import java.util.UUID;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -12,11 +13,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.HttpMethod;
 
+
+
 @WebFilter(urlPatterns = "/*", filterName = "RequestsFilter")
 public class ReqFilter implements Filter {
 
+
 	@Override
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+	public void doFilter (ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		 final HttpServletResponse servletResponse = (HttpServletResponse) response;
 	        final HttpServletRequest servletRequest = (HttpServletRequest) request;
@@ -30,9 +34,25 @@ public class ReqFilter implements Filter {
 	            return;
 	        }
 			
-			chain.doFilter(request, response);
 		
+
+				
+			
+			
+			        
+		String auth = servletRequest.getHeader("Origin");
+			if (auth!=null) {
+				System.out.println(auth);
+		    	String randomUUIDString = UUID.randomUUID().toString().replace("-", "");
+				System.out.println("uuid = " + randomUUIDString);
+
+
+			chain.doFilter(request, response);
+
+			} else {  System.out.println("TEST" + auth); } 
 	}
 	
+	   final String uuid = UUID.randomUUID().toString().replace("-", "");
+	
 
-}
+} 

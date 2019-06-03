@@ -11,14 +11,19 @@ import { LoginComponent } from './login/login.component';
 import { NavigationComponent } from './navigation/navigation.component';
 
 import {TableModule} from 'primeng/table';
+import {ButtonModule} from 'primeng/button';
 
 import {ContextMenuModule} from 'primeng/contextmenu';
+import { WebphoneComponent } from './webphone/webphone.component';
+import { MNOComponent } from './mno/mno.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    NavigationComponent
+    NavigationComponent,
+    WebphoneComponent,
+    MNOComponent
   ],
   imports: [
     HttpClientModule,
@@ -28,6 +33,7 @@ import {ContextMenuModule} from 'primeng/contextmenu';
     BrowserModule,
     AppRoutingModule,
     TableModule,
+    ButtonModule,
     ContextMenuModule
   ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
